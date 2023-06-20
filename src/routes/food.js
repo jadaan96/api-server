@@ -35,9 +35,8 @@ async function updatFoodById(req,res){
     console.log(req)
     const obj = req.body;
     const food = await Food.update(obj,{where:{id} })
-    const updatefood = await findOne.update(obj)
-
-    res.status(202).json(updatefood)
+    const idFood = await Food.findOne({where:{id} })
+        res.status(202).json(idFood)
 
 }
 
