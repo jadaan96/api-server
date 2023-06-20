@@ -3,8 +3,8 @@
 require('dotenv').config()
 
 const supertest = require('supertest')
-const { app } = require('../../server')
-const { db } = require('../../models/index')
+const { app } = require('../src/server')
+const { db } = require('../src/models/index')
 const muke = supertest(app)
 
 describe('Server test', () => {
