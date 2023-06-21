@@ -4,6 +4,8 @@ const express = require('express');
 const cors = require('cors');
 const foodRouter =require('./routes/food')
 const clothesRouter=require('./routes/clothes')
+const recipeRouter = require('./routes/recipe')
+const ingredientsRouter =require('./routes/ingredients')
 const page404=require('./error-handlers/404')
 const page500 =require('./error-handlers/500')
 const app = express();
@@ -18,6 +20,9 @@ app.get('/', (req, res) => {
 })
 app.use(foodRouter)
 app.use(clothesRouter)
+app.use(recipeRouter)
+app.use(ingredientsRouter)
+
 
 
 function start(port) {
