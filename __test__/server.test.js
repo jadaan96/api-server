@@ -52,9 +52,44 @@ describe('test server', () => {
         })
         expect(res.status).toBe(202);
     })
-    it('delet food', async () => {
+    it('delet food', async () => { 
         const res = await muke.delete('/food/1')
         expect(res.status).toBe(204);
     })
 
+})
+describe('test server', () => {
+    it('Create a record using POST', async () => {
+        const res = await muke.post('/recipe').send({
+            name: 'mansaf',
+            recipeCounty: 'jordan'
+          });
+          const createdrecipe = JSON.parse(res.text);
+          expect(res.status).toBe(201);
+          expect(createdrecipe.name).toEqual('mansaf')
+    });
+    
+    it('Read a list of records using GET', async () => {
+        const res = await muke.get('/recipe');
+        console.log(res.body)
+        expect(res.status).toBe(200);})
+        it('Read a list of records using GET', async () => {
+            const res = await muke.get('/recipe/1');
+            console.log(res.body)
+            expect(res.status).toBe(200);})
+
+            it('Create a record using POST', async () => {
+                const res = await muke.put('/recipe/1').send({
+                    name: 'spagete',
+                    recipeCounty: 'italy'
+                  });
+                  const createdrecipe = JSON.parse(res.text);
+                  expect(res.status).toBe(202);
+                  expect(createdrecipe.name).toEqual('spagete')
+            });
+            it('Read a list of records using GET', async () => {
+                const res = await muke.delete('/recipe/1');
+                expect(res.status).toBe(204);  })
+
+             
 })
